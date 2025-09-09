@@ -16,7 +16,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="../css/Home.css" />
+    <link rel="stylesheet" href="../css/home.css" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
@@ -24,6 +24,8 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
+    <!-- Add this script tag to your HTML file -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
 
   <body>
@@ -36,8 +38,8 @@
               <i class="fa-solid fa-store item d-none h3"></i>
             </div>
             <div class="icon">
-              <i class="fa-solid fa-left-long"></i>
-              <i class="fa-solid fa-bars d-none"></i>
+              <i class="fa-solid fa-left-long item"></i>
+              <i class="fa-solid fa-bars d-none item"></i>
             </div>
           </div>
           <ul>
@@ -79,178 +81,403 @@
             />
           </div>
         </div>
+        <div class="main">
+          <div class="container mt-3">
+            <div class="box">
+              <div class="container">
+                <div class="row row-cols-md-2 row-col-1">
+                  <div class="col">
+                     <h1>thong ke theo so khach moi ban</h1>
+                    <div class="bar-chart"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="box">
+              <div
+                id="table-order"
+                class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3"
+              ></div>
+            </div>
+            <div class="box">
+              <div class="top-page-order">
+                <div class="choose-a-table gap-3">
+                  <p class="text-nowrap">Choose a table</p>
+                  <select
+                    id="select-table"
+                    class="form-select form-select-sm py-2"
+                    aria-label=".form-select-sm example"
+                  >
+                    <option selected>Open this table</option>
+                  </select>
+                  <button
+                    id="order-food"
+                    type="button"
+                    class="btn btn-secondary text-nowrap"
+                  >
+                    Order
+                  </button>
+                </div>
+                <div class="d-flex align-items-center gap-2">
+                  <input
+                    id="search-food"
+                    class="p-1"
+                    type="text"
+                    placeholder="Search..."
+                  />
+                  <button type="button" class="btn btn-secondary">
+                    Search
+                  </button>
+                </div>
+                <button
+                  id="add-food"
+                  type="button"
+                  class="btn btn-success"
+                  data-bs-toggle="modal"
+                  data-bs-target="#modalFood"
+                >
+                  Add Food
+                </button>
+              </div>
+              <div
+                id="food-order"
+                class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3 mt-1"
+              ></div>
+            </div>
+            <div class="box">
+              <div class="top-page-order">
+                <div class="choose-a-table gap-3">
+                  <p class="text-nowrap">Choose a table</p>
+                  <select
+                    id="select-table-bill"
+                    class="form-select form-select-sm py-2"
+                    aria-label=".form-select-sm example"
+                    onchange="OnchangeSelectTableBill()"
+                  >
+                    <option selected>Open this table</option>
+                  </select>
+                  <button
+                    id="btn-pay-bill"
+                    type="button"
+                    class="btn btn-secondary text-nowrap"
+                  >
+                    Pay Bill
+                  </button>
+                </div>
+              </div>
+              <div class="mt-3">
+                <table class="table">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Image</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Quantity</th>
+                      <th scope="col">Price</th>
+                    </tr>
+                  </thead>
+                  <tbody class="show-food-bill"></tbody>
+                </table>
+              </div>
+            </div>
+            <div class="box">
+              <div class="row">
+                <div class="col-5">
+                  <h3 class="bg-light rounded-top-2 p-2 border-bottom">
+                    AVATAR
+                  </h3>
+                  <div class="bg-white rounded-bottom-2 px-2 py-4">
+                    <img
+                      src="https://www.vietnamworks.com/hrinsider/wp-content/uploads/2023/12/anh-den-ngau.jpeg"
+                      class="rounded-circle w-75 d-block mx-auto"
+                      alt="..."
+                    />
+                  </div>
+                </div>
+                <div class="col-7">
+                  <h3 class="bg-light rounded-top-2 p-2 border-bottom">
+                    INFORMATION
+                  </h3>
+                  <div class="bg-white rounded-bottom-2 px-2 py-4">
+                    <!-- First & Last Name -->
+                    <div class="row g-3 mb-3">
+                      <div class="col">
+                        <label for="firstName" class="form-label"
+                          >First Name</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="firstName"
+                          placeholder="First Name"
+                        />
+                      </div>
+                      <div class="col">
+                        <label for="lastName" class="form-label"
+                          >Last Name</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="lastName"
+                          placeholder="Last Name"
+                        />
+                      </div>
+                    </div>
 
-        <div id="layout-order">
-          <div class="item-booking">
-            <div class="img-order pb-2">
-              <div><img src="../img/order-cart.jpg" alt="" /></div>
-            </div>
-            <p class="count-table">1</p>
-            <div class="action-order">
-              <button class="btn btn-success">
-                <i class="fa-solid fa-plus"></i>
-                <p>ADD</p>
-              </button>
-              <button class="btn btn-danger">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <p>CART</p>
-              </button>
-            </div>
-          </div>
-          <div class="item-booking">
-            <div class="img-order pb-2">
-              <div><img src="../img/order-cart.jpg" alt="" /></div>
-            </div>
-            <p class="count-table">2</p>
-            <div class="action-order">
-              <button class="btn btn-success">
-                <i class="fa-solid fa-plus"></i>
-                <p>ADD</p>
-              </button>
-              <button class="btn btn-danger">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <p>CART</p>
-              </button>
-            </div>
-          </div>
-          <div class="item-booking">
-            <div class="img-order pb-2">
-              <div><img src="../img/order-cart.jpg" alt="" /></div>
-            </div>
-            <p class="count-table">3</p>
-            <div class="action-order">
-              <button class="btn btn-success">
-                <i class="fa-solid fa-plus"></i>
-                <p>ADD</p>
-              </button>
-              <button class="btn btn-danger">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <p>CART</p>
-              </button>
-            </div>
-          </div>
-          <div class="item-booking">
-            <div class="img-order pb-2">
-              <div><img src="../img/order-cart.jpg" alt="" /></div>
-            </div>
-            <p class="count-table">4</p>
-            <div class="action-order">
-              <button class="btn btn-success">
-                <i class="fa-solid fa-plus"></i>
-                <p>ADD</p>
-              </button>
-              <button class="btn btn-danger">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <p>CART</p>
-              </button>
-            </div>
-          </div>
-          <div class="item-booking">
-            <div class="img-order pb-2">
-              <div><img src="../img/order-cart.jpg" alt="" /></div>
-            </div>
-            <p class="count-table">5</p>
-            <div class="action-order">
-              <button class="btn btn-success">
-                <i class="fa-solid fa-plus"></i>
-                <p>ADD</p>
-              </button>
-              <button class="btn btn-danger">
-                <i class="fa-solid fa-cart-shopping"></i>
-                <p>CART</p>
-              </button>
-            </div>
-          </div>
-          <div class="item-booking">
-            <div class="img-order pb-2">
-              <div><img src="../img/order-cart.jpg" alt="" /></div>
-            </div>
-            <p class="count-table">6</p>
-            <div class="action-order">
-              <button class="btn btn-warning">
-                <i class="fa-solid fa-store"></i>
-                <p>BOOKING</p>
-              </button>
-            </div>
-          </div>
-          <div class="item-booking">
-            <div class="img-order pb-2">
-              <div><img src="../img/order-cart.jpg" alt="" /></div>
-            </div>
-            <p class="count-table">7</p>
-            <div class="action-order">
-              <button class="btn btn-warning">
-                <i class="fa-solid fa-store"></i>
-                <p>BOOKING</p>
-              </button>
-            </div>
-          </div>
-          <div class="item-booking">
-            <div class="img-order pb-2">
-              <div><img src="../img/order-cart.jpg" alt="" /></div>
-            </div>
-            <p class="count-table">8</p>
-            <div class="action-order">
-              <button class="btn btn-warning">
-                <i class="fa-solid fa-store"></i>
-                <p>BOOKING</p>
-              </button>
-            </div>
-          </div>
-          <div class="item-booking">
-            <div class="img-order pb-2">
-              <div><img src="../img/order-cart.jpg" alt="" /></div>
-            </div>
-            <p class="count-table">9</p>
-            <div class="action-order">
-              <button class="btn btn-warning">
-                <i class="fa-solid fa-store"></i>
-                <p>BOOKING</p>
-              </button>
-            </div>
-          </div>
-          <div class="item-booking">
-            <div class="img-order pb-2">
-              <div><img src="../img/order-cart.jpg" alt="" /></div>
-            </div>
-            <p class="count-table">10</p>
-            <div class="action-order">
-              <button class="btn btn-warning">
-                <i class="fa-solid fa-store"></i>
-                <p>BOOKING</p>
-              </button>
-            </div>
-          </div>
-          <div class="item-booking">
-            <div class="img-order pb-2">
-              <div><img src="../img/order-cart.jpg" alt="" /></div>
-            </div>
-            <p class="count-table">11</p>
-            <div class="action-order">
-              <button class="btn btn-warning">
-                <i class="fa-solid fa-store"></i>
-                <p>BOOKING</p>
-              </button>
-            </div>
-          </div>
-          <div class="item-booking">
-            <div class="img-order pb-2">
-              <div><img src="../img/order-cart.jpg" alt="" /></div>
-            </div>
-            <p class="count-table">12</p>
-            <div class="action-order">
-              <button class="btn btn-warning">
-                <i class="fa-solid fa-store"></i>
-                <p>BOOKING</p>
-              </button>
+                    <!-- Email -->
+                    <div class="mb-3">
+                      <label for="email" class="form-label"
+                        >Email Address</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        placeholder="Enter your email"
+                      />
+                    </div>
+
+                    <!-- Address -->
+                    <div class="mb-3">
+                      <label for="address" class="form-label">Address</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="address"
+                        placeholder="Enter your address"
+                      />
+                    </div>
+
+                    <!-- Phone & Date of Birth -->
+                    <div class="row g-3 mb-3">
+                      <div class="col">
+                        <label for="phonenumber" class="form-label"
+                          >Phone Number</label
+                        >
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="phonenumber"
+                          placeholder="Phone Number"
+                        />
+                      </div>
+                      <div class="col">
+                        <label for="dob" class="form-label"
+                          >Date of Birth</label
+                        >
+                        <input type="date" class="form-control" id="dob" />
+                      </div>
+                    </div>
+
+                    <!-- File Upload -->
+                    <div class="mb-3">
+                      <label for="uploadFile" class="form-label"
+                        >Upload File</label
+                      >
+                      <input
+                        type="file"
+                        class="form-control"
+                        id="uploadFile"
+                        aria-label="Upload"
+                      />
+                    </div>
+                    <button
+                      type="button"
+                      class="btn btn-success d-block mx-auto"
+                    >
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="p-2">Được thực hiện bởi <b>Vixbol.dev</b></div>
       </main>
     </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="modalBooking"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">TABLE BOOKING</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <b>Customer Name</b>
+            <input
+              id="input-customer-name"
+              class="form-control p-1 m-2"
+              type="text"
+              placeholder="Customer Name"
+            />
+            <b>Quantity</b>
+            <input
+              id="input-quantity"
+              class="form-control p-1 m-2"
+              type="text"
+              placeholder="Quantity"
+            />
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button id="btn-send" type="button" class="btn btn-primary">
+              Gửi
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Add New Food -->
+    <div
+      class="modal fade"
+      id="modalFood"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">MODAL FOOD</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <b>Name</b>
+            <input
+              id="input-name"
+              class="form-control p-1 m-2"
+              type="text"
+              placeholder="Name"
+            />
+            <b>Price</b>
+            <input
+              id="input-price"
+              class="form-control p-1 m-2"
+              type="text"
+              placeholder="Price"
+            />
+            <div class="input-group mb-3">
+              <input type="file" class="form-control" id="inputGroupFile01" />
+              <label class="input-group-text" for="inputGroupFile01"
+                >Upload</label
+              >
+            </div>
+            <div>
+              <img
+                id="img_food"
+                src="../img/ga-ran.png"
+                style="width: 100%"
+                alt=""
+              />
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button id="add-new-food" type="button" class="btn btn-primary">
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal List of order dishes -->
+    <div
+      class="modal fade"
+      id="modalListOfOrderDishes"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              List of order dishes
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Image</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Quantity</th>
+                  <th scope="col">Price</th>
+                </tr>
+              </thead>
+              <tbody class="show-food-cart"></tbody>
+            </table>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              id="pay-bill"
+              type="button"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Pay bills
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
     <!-- Bootstrap JavaScript Libraries -->
-    <script src="../js/Home.js"></script>
+    <script src="../js/home.js"></script>
+    <script src="../js/cloudinary.js"></script>
+    <script src="../js/api.js"></script>
+    <script src="../js/getAllFood.js"></script>
+    <script src="../js/getAllTable.js"></script>
+    <script src="../js/order.js"></script>
+    <script src="../js/paybill.js"></script>
+    <script src="../js/chart.js"></script>
+
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

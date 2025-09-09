@@ -19,7 +19,9 @@ hr {
 ul {
   padding-left: 0;
 }
-
+.box {
+  display: none;
+}
 header {
   background-color: palevioletred;
   color: white;
@@ -55,11 +57,11 @@ li {
   align-items: center;
 }
 
+li .item.active {
+  color: black;
+}
+
 main {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  justify-content: space-between;
   width: 100%;
   background-color: pink;
   min-width: 0;
@@ -80,63 +82,37 @@ main {
 .nav-top img {
   width: 50px;
 }
-
-#layout-order {
-  padding: 10px;
-  display: grid;
-  gap: 16px 20px;
-  grid-template-columns: repeat(4, 1fr);
+.img-table {
+  margin-left: 25%;
 }
-
-.item-booking {
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10px;
-  position: relative;
-  border-radius: 10px;
-}
-
-.item-booking .img-order {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 12px 12px 0;
-}
-
-.item-booking .img-order img {
-  max-width: 100%;
-  height: auto;
-  max-height: 150px;
-  object-fit: contain;
-  display: block;
-}
-
-.item-booking .count-table {
+.container .card h4 {
+  width: 30px;
+  height: 30px;
   background-color: palevioletred;
-  padding: 10px;
-  color: white;
-  width: 40px;
-  height: 40px;
   text-align: center;
   border-radius: 50%;
-  font-weight: bold;
-  position: absolute;
-  left: 10px;
+  line-height: 30px;
+  margin: 10px 0 0 10px;
 }
-
-.item-booking .action-order {
-  display: flex;
-  justify-content: space-around;
-  width: 100%;
-}
-
-button.btn {
+.container .top-page-order {
   display: flex;
   align-items: center;
-  gap: 10px;
-  padding: 10px 20px;
+  justify-content: space-between;
+}
+.container .top-page-order .choose-a-table {
+  display: flex;
+  align-items: center;
+}
+
+.container .card .food-order-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 10px;
+}
+
+.container .infor {
+  display: grid;
 }
 
 @media screen and (min-width: 1024px) {
@@ -149,6 +125,10 @@ button.btn {
   .icon {
     transform: translate(50%, -50%);
   }
+  .main {
+    height: calc(100vh - 77px);
+    overflow-y: scroll;
+  }
 }
 
 @media screen and (min-width: 741px) and (max-width: 1023px) {
@@ -158,16 +138,15 @@ button.btn {
   .screen header {
     height: 100vh;
   }
-
-  #layout-order {
-    max-height: calc(100vh - 77px - 40px);
-    overflow-y: auto;
-  }
   .icon {
     transform: translate(50%, -50%);
   }
-  #layout-order {
-    grid-template-columns: 1fr 1fr;
+  .main {
+    height: calc(100vh - 77px);
+    overflow-y: scroll;
+  }
+  .container .top-page-order {
+    flex-wrap: wrap;
   }
 }
 
@@ -175,7 +154,7 @@ button.btn {
   .icon {
     transform: translate(0%, -50%);
   }
-  #layout-order {
-    grid-template-columns: 1fr;
+  .container .top-page-order {
+    flex-wrap: wrap;
   }
 }

@@ -1,0 +1,201 @@
+{
+  "tables": [
+    {
+      "id": "1",
+      "customerName": "Vĩ",
+      "quantity": "3",
+      "status": true
+    },
+    {
+      "id": "2",
+      "customerName": "Vĩr",
+      "quantity": "3",
+      "status": true
+    },
+    {
+      "id": "3",
+      "customerName": "Vĩ",
+      "quantity": "5",
+      "status": true
+    },
+    {
+      "id": "4",
+      "customerName": "Vĩ",
+      "quantity": "2",
+      "status": true
+    },
+    {
+      "id": "5",
+      "customerName": "",
+      "quantity": "",
+      "status": false
+    },
+    {
+      "id": "6",
+      "customerName": "",
+      "quantity": "",
+      "status": true
+    },
+    {
+      "id": "7",
+      "customerName": "",
+      "quantity": "",
+      "status": true
+    },
+    {
+      "id": "8",
+      "customerName": "vfsdbdfb",
+      "quantity": "10",
+      "status": true
+    },
+    {
+      "id": "9",
+      "customerName": "ngu",
+      "quantity": "3",
+      "status": true
+    },
+    {
+      "id": "10",
+      "customerName": "",
+      "quantity": "",
+      "status": false
+    },
+    {
+      "id": "11",
+      "customerName": "",
+      "quantity": "",
+      "status": false
+    },
+    {
+      "id": "12",
+      "customerName": "",
+      "quantity": "",
+      "status": false
+    }
+  ],
+  "foods": [
+    {
+      "id": "1",
+      "name": "Hamburger",
+      "img": "/img/hamburger.png",
+      "price": 39
+    },
+    {
+      "id": "2",
+      "name": "kem dau",
+      "img": "https://res.cloudinary.com/ddkmjr2he/image/upload/v1756191359/da9dqrpklt7ewzzfxtu8.png",
+      "price": "90"
+    },
+    {
+      "id": "3",
+      "name": "Gà Rán",
+      "img": "/img/ga-ran.png",
+      "price": 59
+    },
+    {
+      "id": "4",
+      "name": "Sandwich Bò",
+      "img": "/img/sandwich-bo.png",
+      "price": 49
+    },
+    {
+      "id": "5",
+      "name": "Mì Ý Sốt Bò",
+      "img": "/img/my-y-sot-bo.png",
+      "price": 79
+    },
+    {
+      "id": "6",
+      "name": "Sushi Cá Hồi",
+      "img": "/img/sushi-ca-hoi.png",
+      "price": 99
+    },
+    {
+      "id": "7",
+      "name": "Bánh Mì Thịt Nướng",
+      "img": "/img/banh-mi-thit-nuong.png",
+      "price": 25
+    },
+    {
+      "id": "8",
+      "name": "Salad Rau Trộn",
+      "img": "/img/salad-rau-tron.png",
+      "price": 35
+    },
+    {
+      "id": "9",
+      "name": "Phở Bò",
+      "img": "/img/pho-bo.png",
+      "price": 65
+    },
+    {
+      "id": "10",
+      "name": "Bún Chả Hà Nội",
+      "img": "/img/bun-cha-ha-noi.png",
+      "price": 55
+    },
+    {
+      "id": "11",
+      "name": "Bánh Crepe Dâu",
+      "img": "/img/banh-crepe-dau.png",
+      "price": 45
+    },
+    {
+      "id": "12",
+      "name": "Kem Trái Cây",
+      "img": "/img/kem-trai-cay.png",
+      "price": 40
+    },
+    {
+      "id": "Up5jNSG8P2",
+      "name": "bò né",
+      "img": "https://res.cloudinary.com/ddkmjr2he/image/upload/v1756530294/dudxoxrwpwuaeprxzt9y.png",
+      "price": "34"
+    }
+  ],
+  "orders": [],
+  "billed": [
+    {
+      "id": "fab1",
+      "idTable": "1",
+      "price": "592"
+    },
+    {
+      "id": "76ac",
+      "idTable": "2",
+      "price": "335"
+    }
+  ],
+  "accounts": [
+    {
+      "id": "1543",
+      "UserName": "vixbol",
+      "Email": "tranchivi2k1@gmail.com",
+      "Password": "123123"
+    },
+    {
+      "id": "8e00",
+      "UserName": "",
+      "Email": "",
+      "Password": ""
+    },
+    {
+      "id": "fd97",
+      "UserName": "",
+      "Email": "",
+      "Password": ""
+    },
+    {
+      "id": "c07d",
+      "UserName": "",
+      "Email": "",
+      "Password": ""
+    },
+    {
+      "id": "ab12",
+      "UserName": "kayt",
+      "Email": "kaytofficial2001@gmail.com",
+      "Password": "Bol123"
+    }
+  ]
+}

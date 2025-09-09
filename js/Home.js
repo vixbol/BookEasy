@@ -15,16 +15,25 @@ if (window.matchMedia("(max-width: 740px)").matches) {
   });
 }
 
-const getIconBars = document.querySelectorAll(".icon i");
+const getPages = document.querySelectorAll("li");
+const getBoxs = document.querySelectorAll(".box");
+const getItem = document.querySelectorAll("li .item");
 
-getIconBars.forEach((icon) => {
-  icon.addEventListener("click", () => {
-    getIconBars.forEach((e) => {
-      e.classList.toggle("d-none");
-    });
+getPages.forEach((page, index) => {
+  page.addEventListener("click", () => {
+    getBoxs.forEach((e) => (e.style.display = "none"));
+    getBoxs[index].style.display = "block";
+
+    getItem.forEach((item) => item.classList.remove("active"));
+    getItem[index].classList.add("active");
+
+    localStorage.setItem("index", index);
   });
 });
 
-document.querySelector("#toggle-header").addEventListener("click", () => {
-  document.querySelector("header").classList.toggle("closed");
-});
+const indexBox = localStorage.getItem("index");
+console.log(indexBox);
+
+if (indexBox) {
+  getBoxs[indexBox].style.display = "block";
+}
